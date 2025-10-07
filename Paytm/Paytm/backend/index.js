@@ -1,9 +1,15 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const PORT = process.env.PORT || 3000;
-const MONGO_URL = process.env.MONGO_URL;
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const app = express();
+const mainRouter = require("./routes/index");
+const { authMiddleware } = require("./middlewares/authMiddleware");
+
+app.use(cors());
+app.use(express.json());
+
+app.use("/api/v1",mainRouter);
 
 // Route not Found Handler  
 app.use((req, res, next) => {
