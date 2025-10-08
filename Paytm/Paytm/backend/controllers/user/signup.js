@@ -1,5 +1,5 @@
-const { User } = require("../root/model");
-const { signupSchema } = require("../validation/signup");
+const { User, Account } = require("../../root/model");
+const { signupSchema } = require("../../validation/signup");
 const bcrypt = require("bcrypt");
 const SALTROUNDS = Number(process.env.SALTROUNDS);
 
@@ -36,6 +36,15 @@ const signup = async (req, res) => {
   })
 
   await newUser.save();
+
+  const userId = newUser._id;
+
+  const account = new Account({
+    userId: userId,
+    balance: 1 + Math.random()*10000
+  })
+
+  await account.save();
 
   res.status(200).json({
     success: true,

@@ -1,7 +1,7 @@
 const { success } = require("zod");
-const { signinSchema } = require("../validation/signin");
+const { signinSchema } = require("../../validation/signin");
 const jwt = require("jsonwebtoken");
-const { User } = require("../root/model");
+const { User } = require("../../root/model");
 const JWT_SECRET = process.env.JWT_SECRET;
 const bcrypt = require("bcrypt");
 

@@ -1,7 +1,7 @@
-const { User } = require("../root/model");
+const { User } = require("../../root/model");
 const bcrypt = require("bcrypt");
 const SALTROUNDS = process.env.SALTROUNDS;
-const { updateUserSchema } = require("../validation/update");
+const { updateUserSchema } = require("../../validation/update");
 
 const updateUserInfo = async (req, res) => {
   const id = req.userId;
